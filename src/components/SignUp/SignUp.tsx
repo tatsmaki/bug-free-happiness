@@ -2,10 +2,10 @@ import { useHistory } from 'react-router'
 import { request } from 'src/api'
 import { userStore } from 'src/mobx'
 
-export const Login = () => {
+export const SignUp = () => {
   const history = useHistory()
 
-  const handleLogin = (event: any) => {
+  const handleSignUp = (event: any) => {
     event.preventDefault()
 
     const user = {
@@ -14,11 +14,10 @@ export const Login = () => {
     }
 
     request({
-      url: 'http://localhost:4000/auth/login',
+      url: 'http://localhost:4000/auth/signup',
       method: 'POST',
       body: user,
     }).then(({ token }) => {
-      // const token = jwt.decode(response.jwt)
       userStore.setToken(token)
       history.push('game')
     })
@@ -26,14 +25,14 @@ export const Login = () => {
 
   return (
     <div>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleSignUp}>
         <input name="username" />
         <input name="password" />
-        <button type="submit">Login</button>
+        <button type="submit">Sign up</button>
       </form>
       <div>
-        <span>Don't have an account?</span>
-        <button onClick={() => history.push('sign-up')}>Sign Up</button>
+        <span>Already have an account?</span>
+        <button onClick={() => history.push('login')}>Login</button>
       </div>
     </div>
   )

@@ -1,3 +1,12 @@
+import { userStore } from 'src/mobx'
+
 export const Game = () => {
-  return <div>123</div>
+  const handleLogout = () => userStore.clearToken()
+
+  return (
+    <div>
+      <button onClick={handleLogout}>Logout</button>
+      123
+    </div>
+  )
 }
