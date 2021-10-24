@@ -1,4 +1,5 @@
-@use '../../../colors.scss';
+@use 'src/colors';
+@use 'src/icons';
 
 .wrapper {
   position: relative;
@@ -9,20 +10,20 @@
 
 .input {
   width: 100%;
-  padding: 10px;
-  padding-left: calc(1.2rem + 20px);
+  padding: 12px;
+  padding-left: calc(icons.$icon-size + 24px);
   border: none;
   outline: none;
   border-bottom: 1px colors.$text-secondary solid;
   font-family: system-ui, monospace;
-  font-size: 14px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 16px;
   color: colors.$text-main;
 }
 
 .input::placeholder {
   color: colors.$text-secondary;
   font-family: system-ui, monospace;
-  font-size: 14px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 16px;
 }

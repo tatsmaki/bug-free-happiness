@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { useHistory } from 'react-router'
 import { request } from '@api'
 import { userStore } from '@mobx'
@@ -7,6 +7,8 @@ import { Button } from '@controls/Button'
 import { Link } from '@controls/Link'
 import { Text } from '@common/Text'
 import { Welcome } from '@components/Welcome'
+import { Loader } from '@common/Loader'
+import { Flex } from '@common/Flex'
 import styles from './Login.module.scss'
 
 export const Login = () => {
@@ -16,7 +18,7 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const isLoginValid = Boolean(username && password)
 
-  const handleLogin = (event: any) => {
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     setIsLoading(true)
@@ -26,9 +28,11 @@ export const Login = () => {
       method: 'POST',
       body: { username, password },
       success: ({ token }) => {
-        // const token = jwt.decode(response.jwt)
-        userStore.setToken(token)
-        history.push('game')
+        if (token) {
+          // const user = jwt.decode(token)
+          userStore.setToken(token)
+          history.push('main')
+        }
       },
       fail: () => setIsLoading(false),
     })
@@ -42,21 +46,27 @@ export const Login = () => {
     <div className={styles.container}>
       <Welcome />
       <form className={styles.form} onSubmit={handleLogin}>
-        <Input placeholder="Username" onChange={handleUsername} />
-        <Input
-          type="password"
-          placeholder="Password"
-          onChange={handlePassword}
-        />
-        <div className={styles.actions}>
+        <Loader isLoading={isLoading}>
+          <Flex>
+            <Input placeholder="Username*" onChange={handleUsername} />
+            <Input
+              type="password"
+              placeholder="Password*"
+              onChange={handlePassword}
+            />
+          </Flex>
+        </Loader>
+
+        <Flex>
           <Button type="submit" disabled={!isLoginValid || isLoading}>
             Log In
           </Button>
+
           <div>
             <Text>Don't have an account? </Text>
             <Link to="signup">Sign Up</Link>
           </div>
-        </div>
+        </Flex>
       </form>
     </div>
   )

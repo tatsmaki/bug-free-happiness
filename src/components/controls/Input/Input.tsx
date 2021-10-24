@@ -23,9 +23,10 @@ export const Input: FC<InputProps> = ({
   const handleChange = (event: InputEvent) => onChange!(event.target.value)
 
   return (
-    <div className={styles.wrapper}>
-      {placeholder === 'Username' && <Icon name="user" start />}
-      {placeholder === 'Password' && <Icon name="lock" start />}
+    <div className={`${styles.wrapper}`}>
+      {placeholder === 'Email' && <Icon name="mail" start />}
+      {placeholder === 'Username*' && <Icon name="user" start />}
+      {placeholder === 'Password*' && <Icon name="lock" start />}
       <input
         className={styles.input}
         type={type}

@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
-import { Game } from '@components/Game/Game'
+import { MainMenu } from '@components/MainMenu/MainMenu'
 import { Login } from '@components/Login'
 import { SignUp } from '@components/SignUp/SignUp'
 import { userStore } from '@mobx'
@@ -11,7 +11,7 @@ export const Router = observer(() => {
   return (
     <BrowserRouter>
       <Switch>
-        {isWithToken && <Route path="/game" component={Game} />}
+        {isWithToken && <Route path="/main" component={MainMenu} />}
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Redirect to="/login" />

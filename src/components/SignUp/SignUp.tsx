@@ -1,41 +1,77 @@
+import { useState, FormEvent } from 'react'
 import { useHistory } from 'react-router'
 import { request } from '@api'
 import { userStore } from '@mobx'
+import { Input } from '@controls/Input'
+import { Button } from '@controls/Button'
+import { Text } from '@common/Text'
+import { Link } from '@controls/Link'
+import { Welcome } from '@components/Welcome'
+import { Loader } from '@common/Loader'
+import { Flex } from '@common/Flex'
+import styles from './SignUp.module.scss'
 
 export const SignUp = () => {
   const history = useHistory()
+  const [isLoading, setIsLoading] = useState(false)
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const isFormValid = Boolean(username && password)
 
-  const handleSignUp = (event: any) => {
+  const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const user = {
-      username: event.target.username.value,
-      password: event.target.password.value,
-    }
-
+    setIsLoading(true)
     request({
       // url: 'http://localhost:4000/auth/signup',
       url: 'https://nest-ts-server.herokuapp.com/signup',
       method: 'POST',
-      body: user,
+      body: { username, password },
       success: ({ token }) => {
-        userStore.setToken(token)
-        history.push('game')
+        if (token) {
+          userStore.setToken(token)
+          history.push('main')
+        }
       },
+      fail: () => setIsLoading(false),
     })
   }
 
+  const handleEmail = (value: string) => setEmail(value)
+
+  const handleUsername = (value: string) => setUsername(value)
+
+  const handlePassword = (value: string) => setPassword(value)
+
   return (
-    <div>
-      <form onSubmit={handleSignUp}>
-        <input name="username" />
-        <input name="password" />
-        <button type="submit">Sign Up</button>
+    <div className={styles.container}>
+      <Welcome />
+
+      <form className={styles.form} onSubmit={handleSignUp}>
+        <Loader isLoading={isLoading}>
+          <Flex>
+            <Input placeholder="Email" onChange={handleEmail} />
+            <Input placeholder="Username*" onChange={handleUsername} />
+            <Input
+              type="password"
+              placeholder="Password*"
+              onChange={handlePassword}
+            />
+          </Flex>
+        </Loader>
+
+        <Flex>
+          <Button type="submit" disabled={!isFormValid || isLoading}>
+            Sign Up
+          </Button>
+
+          <div>
+            <Text>Already have an account? </Text>
+            <Link to="login">Log In</Link>
+          </div>
+        </Flex>
       </form>
-      <div>
-        <span>Already have an account?</span>
-        <button onClick={() => history.push('login')}>Log In</button>
-      </div>
     </div>
   )
 }

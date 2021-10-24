@@ -33,9 +33,20 @@ export const Icon: FC<IconProps> = ({ name, start }) => {
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M7 10 C 6 1, 18 1, 17 10" />
+          <path d="M7 11 C 6 1, 18 1, 17 11" />
           <rect x="4" y="11" width="16" height="12" />
           <circle cx="12" cy="17" r="1" />
+        </svg>
+      )}
+
+      {name === IconNames.Mail && (
+        <svg
+          className={styles.icon}
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="1" y="5" width="22" height="16" />
+          <path d="M1,5 L12,14 L23,5" />
         </svg>
       )}
     </div>

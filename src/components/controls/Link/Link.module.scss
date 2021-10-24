@@ -1,9 +1,9 @@
-@use '../../../colors.scss';
+@use 'src/colors';
 
 .link {
   color: colors.$success-main;
   text-decoration: none;
-  font-family: system-ui, monospace;
-  font-size: 14px;
-  line-height: 14px;
+  font-family: system-ui;
+  font-size: 16px;
+  line-height: 16px;
 }

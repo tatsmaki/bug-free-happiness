@@ -1,8 +1,8 @@
-@use '../../colors.scss';
+@use 'src/colors';
 
 .welcome {
-  padding: 80px 0 20px 40px;
-  margin-right: 80px;
+  padding: 96px 0 32px 64px;
+  margin-right: 96px;
   background-color: colors.$success-main;
   border-bottom-right-radius: 25px;
 }

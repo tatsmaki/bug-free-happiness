@@ -1,13 +1,14 @@
 @use 'src/colors';
+@use 'src/icons';
 
 .wrapper {
   position: absolute;
-  width: 1.2em;
-  height: 1.2em;
+  width: icons.$icon-size;
+  height: icons.$icon-size;
 }
 
 .start {
-  left: 10px;
+  left: 12px;
 }
 
 .icon {
