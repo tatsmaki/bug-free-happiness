@@ -23,16 +23,13 @@ export const Login = () => {
 
     setIsLoading(true)
     request({
-      // url: 'http://localhost:4000/auth/login',
-      url: 'https://nest-ts-server.herokuapp.com/auth/login',
+      path: 'auth/login',
       method: 'POST',
       body: { username, password },
       success: ({ token }) => {
-        if (token) {
-          // const user = jwt.decode(token)
-          userStore.setToken(token)
-          history.push('main')
-        }
+        // const user = jwt.decode(token)
+        userStore.setToken(token)
+        history.push('main')
       },
       fail: () => setIsLoading(false),
     })

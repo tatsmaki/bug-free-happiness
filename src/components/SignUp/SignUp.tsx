@@ -24,10 +24,9 @@ export const SignUp = () => {
 
     setIsLoading(true)
     request({
-      // url: 'http://localhost:4000/auth/signup',
-      url: 'https://nest-ts-server.herokuapp.com/signup',
+      path: 'auth/signup',
       method: 'POST',
-      body: { username, password },
+      body: { email, username, password },
       success: ({ token }) => {
         if (token) {
           userStore.setToken(token)
