@@ -1,0 +1,8 @@
+@use '../../../colors.scss';
+
+.text {
+  color: colors.$text-main;
+  font-family: system-ui, monospace;
+  font-size: 14px;
+  line-height: 14px;
+}

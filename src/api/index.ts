@@ -2,10 +2,18 @@ type RequestPayload = {
   url: string
   method: string
   body?: any
+  success: (data: any) => void
+  fail?: (error: any) => void
 }
 type Request = (payload: RequestPayload) => Promise<any>
 
-export const request: Request = ({ url, method, body }) => {
+export const request: Request = ({
+  url,
+  method,
+  body,
+  success,
+  fail = (error) => console.error(error),
+}) => {
   return fetch(url, {
     mode: 'cors',
     headers: {
@@ -15,5 +23,6 @@ export const request: Request = ({ url, method, body }) => {
     body: JSON.stringify(body),
   })
     .then((response) => response.json())
-    .catch((error) => console.error(error))
+    .then((data) => success(data))
+    .catch((error) => fail(error))
 }

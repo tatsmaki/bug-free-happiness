@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router'
-import { request } from 'src/api'
-import { userStore } from 'src/mobx'
+import { request } from '@api'
+import { userStore } from '@mobx'
 
 export const SignUp = () => {
   const history = useHistory()
@@ -14,12 +14,14 @@ export const SignUp = () => {
     }
 
     request({
-      url: 'http://localhost:4000/auth/signup',
+      // url: 'http://localhost:4000/auth/signup',
+      url: 'https://nest-ts-server.herokuapp.com/signup',
       method: 'POST',
       body: user,
-    }).then(({ token }) => {
-      userStore.setToken(token)
-      history.push('game')
+      success: ({ token }) => {
+        userStore.setToken(token)
+        history.push('game')
+      },
     })
   }
 
@@ -28,11 +30,11 @@ export const SignUp = () => {
       <form onSubmit={handleSignUp}>
         <input name="username" />
         <input name="password" />
-        <button type="submit">Sign up</button>
+        <button type="submit">Sign Up</button>
       </form>
       <div>
         <span>Already have an account?</span>
-        <button onClick={() => history.push('login')}>Login</button>
+        <button onClick={() => history.push('login')}>Log In</button>
       </div>
     </div>
   )

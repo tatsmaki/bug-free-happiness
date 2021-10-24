@@ -1,0 +1,28 @@
+@use '../../../colors.scss';
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  padding-left: calc(1.2rem + 20px);
+  border: none;
+  outline: none;
+  border-bottom: 1px colors.$text-secondary solid;
+  font-family: system-ui, monospace;
+  font-size: 14px;
+  line-height: 14px;
+  color: colors.$text-main;
+}
+
+.input::placeholder {
+  color: colors.$text-secondary;
+  font-family: system-ui, monospace;
+  font-size: 14px;
+  line-height: 14px;
+}

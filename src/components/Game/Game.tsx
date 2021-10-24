@@ -1,4 +1,4 @@
-import { userStore } from 'src/mobx'
+import { userStore } from '@mobx'
 
 export const Game = () => {
   const handleLogout = () => userStore.clearToken()

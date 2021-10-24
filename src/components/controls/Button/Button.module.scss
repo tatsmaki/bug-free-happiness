@@ -1,0 +1,27 @@
+@use 'src/colors';
+
+.button {
+  min-width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  background-color: colors.$success-main;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: colors.$success-secondary;
+}
+
+.button:disabled {
+  cursor: default;
+  background-color: colors.$success-light;
+}
+
+.children {
+  font-family: system-ui, monospace;
+  color: white;
+  font-size: 14px;
+  line-height: 14px;
+}

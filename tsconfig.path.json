@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@controls/*": ["src/components/controls/*"],
+      "@common/*": ["src/components/common/*"],
+      "@constants": ["src/constants"],
+      "@api": ["src/api"],
+      "@mobx": ["src/mobx"]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx'
 import Cookie from 'mobx-cookie'
-import { TOKEN } from '../constants'
+import { TOKEN } from '@constants'
 
 export class UserStore {
   @observable

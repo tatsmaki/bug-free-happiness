@@ -1,0 +1,19 @@
+@use 'src/colors';
+
+.wrapper {
+  position: absolute;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.start {
+  left: 10px;
+}
+
+.icon {
+  stroke: colors.$success-main;
+  fill: none;
+  stroke-width: 2px;
+  width: inherit;
+  height: inherit;
+}
