@@ -50,7 +50,7 @@ export const SignUp = () => {
       <form className={styles.form} onSubmit={handleSignUp}>
         <Loader isLoading={isLoading}>
           <Flex>
-            <Input placeholder="Email" onChange={handleEmail} />
+            <Input placeholder="Email" disabled onChange={handleEmail} />
             <Input placeholder="Username*" onChange={handleUsername} />
             <Input
               type="password"

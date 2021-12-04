@@ -8,6 +8,7 @@
   outline: none;
   background-color: colors.$success-main;
   cursor: pointer;
+  user-select: none;
 }
 
 .button:hover {
