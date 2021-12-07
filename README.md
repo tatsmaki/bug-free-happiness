@@ -4,4 +4,4 @@
 2. solid player & other game stuff
 3. texture animation frames order
 
-https://bug-free-happiness.netlify.app/game
+https://bug-free-happiness.netlify.app
